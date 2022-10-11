@@ -1,0 +1,47 @@
+esphome:
+  name: topeni
+
+esp8266:
+  board: esp_wroom_02
+
+# Enable logging
+logger:
+
+wifi:
+  ssid:
+  password:
+  use_address:
+  
+  ap:
+    ssid: "Fallback Hotspot"
+    password: "12345678"
+
+captive_portal:
+api:
+ota:
+web_server:
+  version: 2
+
+tuya:
+
+uart:
+  rx_pin: GPIO13
+  tx_pin: GPIO15
+  baud_rate: 9600
+
+climate:
+  - platform: tuya
+    supports_heat: true
+    supports_cool: false
+    name: "Topeni"
+    switch_datapoint: 1
+    target_temperature_datapoint: 3  # min 5 - max 40
+    current_temperature_datapoint: 4
+    eco_datapoint: 7 #Low, Hight
+    visual:
+      min_temperature: 5
+      max_temperature: 40
+      temperature_step: 1
+    #eco_temperature: 20 °C
+#childlock datapoint 2
+#timer datapoint 5
